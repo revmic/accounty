@@ -12,7 +12,7 @@
       table-style="font-size: 50px"
     >
     <!-- :table-style="{width: '100%', color: 'blue', fontSize: '40px'}" -->
-      <!-- <template slot="top-selection" slot-scope="props">
+<!--       <template slot="top-selection" slot-scope="props">
         <div class="col" />
         <q-btn color="negative" flat round delete icon="delete" @click="deleteEntries" />
       </template> -->
@@ -79,6 +79,9 @@
                 prefix="$"
                 @change="editCell('dollars', $event, props.row)"
               />
+            </q-td>
+            <q-td>
+              <q-btn color="negative" flat round delete icon="delete" size="sm" @click="deleteEntry(props.row)" />
             </q-td>
           </q-tr>
 
@@ -369,21 +372,16 @@ export default {
       console.log('value: ' + value)
       this.entriesRef.child(row.id + '/' + field).set(value)
     },
-    deleteEntries () {
+    deleteEntry (row) {
       this.$q.dialog({
-        title: 'Delete entries',
-        message: 'Do you want to delete all selected entries?',
+        title: 'Delete',
+        message: 'Delete entry?',
         cancel: true,
         ok: true
       }).then(() => {
-        for (let i = 0; i < this.selectedRows.length; i++) {
-          // console.log(this.selectedRows[i])
-          // console.log(this.selectedRows[i].id)
-          this.entriesRef.child(this.selectedRows[i].id).remove()
-          // this.$db.ref().child(this.selectedRows[i].id).remove()
-        }
+        this.entriesRef.child(row.id).remove()
       }).catch((err) => {
-        this.$q.notify('Could not delete. ' + err.message)
+        this.$q.notify('Did not delete. ' + err.message)
       })
     },
 

@@ -1,6 +1,6 @@
 {
   "name": "accounty",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Accounting app for Rocky",
   "productName": "Accounty",
   "cordovaId": "org.cordova.quasar.app",
@@ -13,27 +13,28 @@
     "deploy": "npm run build && firebase deploy"
   },
   "dependencies": {
-    "chart.js": "^2.7.1",
-    "firebase": "^4.10.0",
-    "vue-chartjs": "^3.2.1",
+    "chart.js": "^2.9.3",
+    "firebase": "^7.9.1",
+    "vue-chartjs": "^3.5.0",
     "vue-webcam": "^2.0.4",
     "vuefire": "^1.4.5"
   },
   "devDependencies": {
     "babel-eslint": "8.2.1",
-    "eslint": "^4.15.0",
+    "eslint": "^6.8.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-friendly-formatter": "3.0.0",
-    "eslint-loader": "^2.0.0",
+    "eslint-loader": "^3.0.3",
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-node": "5.2.0",
-    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "3.0.1",
     "eslint-plugin-vue": "4.0.0",
-    "quasar-cli": "^0.15.4"
+    "quasar-cli": "^0.17.26",
+    "strip-ansi": "^3.0.1"
   },
   "engines": {
-    "node": ">= 13.8.0",
+    "node": "8",
     "npm": ">= 6.13.0"
   },
   "browserslist": [

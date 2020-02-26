@@ -9,15 +9,15 @@ const config = {
 const vision = require('@google-cloud/vision')
 const client = new vision.ImageAnnotatorClient()
 
-var admin = require("firebase-admin")
+var admin = require('firebase-admin')
 var serviceAccount = require('./keyfile.json')
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://rocky-money.firebaseio.com"
+  databaseURL: 'https://rocky-money.firebaseio.com'
 })
 const db = admin.database()
 
-exports.callVision = functions.storage.object().onChange(event => {
+exports.callVision2 = functions.storage.object().onFinalize(event => {
   const obj = event.data
   // Get user ID and entity ID from file path and create entry ref
   const uid = obj.name.split('/')[1]

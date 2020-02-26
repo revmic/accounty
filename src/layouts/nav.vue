@@ -57,7 +57,7 @@
         </q-item>
         <q-item>
           <router-link to="/summary">
-            <q-btn flat>Summaries & Charts</q-btn>
+            <q-btn flat>Trends</q-btn>
           </router-link>
         </q-item>
         <q-item>

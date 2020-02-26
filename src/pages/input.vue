@@ -231,7 +231,7 @@ export default {
         dateStr: date.formatDate(initTime, 'DD MMM YYYY'),
         dollars: null,
         hours: null,
-        job: 'restaurant',
+        job: 'jewelry',
         type: 'income',
         description: '',
         tags: [],

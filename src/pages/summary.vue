@@ -27,7 +27,7 @@
     <q-card>
       <q-collapsible opened label="Summaries" icon="view_headline">
         <!-- <h4></h4> -->
-        <table class="q-table horizontal-separator" style="width:100%">
+        <!-- <table class="q-table horizontal-separator" style="width:100%">
           <thead>
             Restaurant
           </thead>
@@ -61,7 +61,7 @@
               <td>{{ summary.bestWeekday }}</td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
 
         <table class="q-table horizontal-separator" style="width:100%">
           <thead>
@@ -70,11 +70,11 @@
           <tbody>
             <tr>
               <td>Total income:</td>
-              <td>$ {{ summary.jewelryIncome }}</td>
+              <td>$ {{ summary.jewelryIncome.toFixed(2) }}</td>
             </tr>
             <tr>
               <td>Total expenses:</td>
-              <td>$ {{ summary.jewelryExpenses }}</td>
+              <td>$ {{ summary.jewelryExpenses.toFixed(2) }}</td>
             </tr>
           </tbody>
         </table>
@@ -138,15 +138,16 @@ export default {
     return {
       loaded: false,
 
-      summaryStart: date.subtractFromDate(initTime, { days: 30 }),
-      summaryEnd: initTime,
+      summaryStart: new Date(initTime.getFullYear(), initTime.getMonth(), 1),
+      summaryEnd: new Date(initTime.getFullYear(), initTime.getMonth() + 1, 0),
       filteredEntries: [],
 
-      rangePreset: 'lastMonth',
+      rangePreset: 'thisMonth',
       rangePresetOptions: [
-        { 'label': 'Past year', 'value': 'lastYear' },
-        { 'label': 'Past month', 'value': 'lastMonth' },
-        { 'label': 'Past week', 'value': 'lastWeek' },
+        { 'label': 'This month', 'value': 'thisMonth' },
+        { 'label': 'Last month', 'value': 'lastMonth' },
+        { 'label': 'This year', 'value': 'thisYear' },
+        { 'label': 'Last year', 'value': 'lastYear' },
         { 'label': 'All time', 'value': 'all' }
       ],
 
@@ -185,6 +186,7 @@ export default {
         this.filterEntries()
       })
     }
+    this.rangePreset === 'thisMonth'
   },
   computed: {
     summary () {
@@ -432,17 +434,21 @@ export default {
       }
     },
     rangeChange () {
-      if (this.rangePreset === 'lastYear') {
-        this.summaryStart = date.subtractFromDate(initTime, { year: 1, days: 1 })
-        this.summaryEnd = initTime
+      if (this.rangePreset === 'thisMonth') {
+        this.summaryStart = new Date(initTime.getFullYear(), initTime.getMonth(), 1)
+        this.summaryEnd = new Date(initTime.getFullYear(), initTime.getMonth() + 1, 0)
       }
       if (this.rangePreset === 'lastMonth') {
-        this.summaryStart = date.subtractFromDate(initTime, { month: 1, days: 1 })
-        this.summaryEnd = initTime
+        this.summaryStart = new Date(initTime.getFullYear(), initTime.getMonth()-1, 1)
+        this.summaryEnd = new Date(initTime.getFullYear(), initTime.getMonth(), 0)
       }
-      if (this.rangePreset === 'lastWeek') {
-        this.summaryStart = date.subtractFromDate(initTime, { days: 8 })
-        this.summaryEnd = initTime
+      if (this.rangePreset === 'thisYear') {
+        this.summaryStart = new Date(initTime.getFullYear(), 0, 1)
+        this.summaryEnd = new Date(initTime.getFullYear(), 11, 31)
+      }
+      if (this.rangePreset === 'lastYear') {
+        this.summaryStart = new Date(initTime.getFullYear() - 1, 0, 1)
+        this.summaryEnd = new Date(initTime.getFullYear() - 1, 11, 31)
       }
       if (this.rangePreset === 'all') {
         this.summaryStart = new Date('2017-01-02')
