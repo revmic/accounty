@@ -390,8 +390,9 @@ export default {
       this.newEntry.dollars = null
       this.newEntry.hours = null
       this.newEntry.uploads = []
-      this.newEntry.tags = []
+      // this.newEntry.tags = []
       this.newEntry.date = date.addToDate(this.newEntry.date, { minutes: 1 })
+      this.newEntry.description = ''
       // this.uploads = []
       // this.imageUploads = []
       console.info(this.uploads)

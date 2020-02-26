@@ -17,18 +17,6 @@ admin.initializeApp({
 })
 const db = admin.database()
 
-// const exclude = [
-//   'me',
-//   'you',
-//   'he',
-//   'she',
-//   'it'
-//   'and',
-//   'or',
-//   'but',
-//   'the'
-// ]
-
 exports.callVision = functions.storage.object().onChange(event => {
   const obj = event.data
   // Get user ID and entity ID from file path and create entry ref

@@ -23,7 +23,7 @@ module.exports = function (ctx) {
     build: {
       scopeHoisting: true,
       vueRouterMode: 'hash',
-      // gzip: true,
+      gzip: true,
       // analyze: true,
       // extractCSS: false,
       // useNotifier: false,
@@ -37,7 +37,7 @@ module.exports = function (ctx) {
       }
     },
     devServer: {
-      // https: true,
+      https: true,
       // port: 8080,
       open: true // opens browser window automatically
     },

@@ -36,52 +36,6 @@
       </q-toolbar>
     </q-layout-header>
 
-    <!-- <q-dialog
-      v-model="loginOpened"
-      cancel="Cancel"
-      ok="Login"
-      @ok="login"
-      @cancel="loginOpened=false"
-    >
-      <span slot="title">Login to Accounty</span>
-
-      <div slot="body">
-        <q-field class="q-pb-lg">
-          <q-input
-            v-model="email"
-            float-label="Email"
-          />
-        </q-field>
-
-        <q-field>
-          <q-input
-            v-model="password"
-            type="password"
-            float-label="Password"
-          />
-        </q-field>
-      </div>
-
-    </q-dialog> -->
-
-<!--     <q-modal v-model="loginOpened" position="top">
-      <h4>Login Modal</h4>
-      <q-btn
-        color="primary"
-        @click="loginOpened=false"
-        label="Close"
-      />
-    </q-modal> -->
-
-<!--     <q-modal v-model="loginOpened">
-      <h4>Login Modal</h4>
-      <q-btn
-        color="primary"
-        @click="loginOpened=false"
-        label="Close"
-      />
-    </q-modal> -->
-
     <q-layout-drawer
       v-model="leftDrawerOpen"
       content-class="bg-grey-2"
@@ -132,31 +86,7 @@ export default {
     return {
       leftDrawerOpen: false,
       username: ''
-      // loginOpened: false,
-      // email: '',
-      // password: '',
-      // loginOptions: {
-      //   title: 'Login',
-      //   prompt: {
-      //     type: 'text',
-      //     items: [
-      //       { label: 'Email', value: 'email' }
-      //     ]
-      //   },
-      //   ok: {
-      //     push: true,
-      //     label: 'Yeah OK'
-      //   }
-      // }
     }
-  },
-  computed: {
-    // username () {
-    //   return this.$user.email.split('@')[0]
-    // }
-  },
-  created () {
-    // this.$q.dialog(this.loginOptions)
   },
   mounted () {
     // this.username = this.$user.email.split('@')[0]
@@ -168,27 +98,9 @@ export default {
       } else {
         this.leftDrawerOpen = false
       }
-      // Open login dialog
-      // if (this.$route.query.login === 'true') {
-      //   this.loginOpened = true
-      // }
     })
   },
   methods: {
-    // login () {
-    //   if (this.email && this.password) {
-    //     this.$auth.signInWithEmailAndPassword(
-    //       this.email,
-    //       this.password
-    //     ).catch((error) => {
-    //       this.$q.notify({
-    //         type: 'warning',
-    //         message: error.code + ' -- ' + error.message
-    //       })
-    //       this.$q.dialog(this.loginOptions)
-    //     })
-    //   }
-    // },
     login () {
       this.$router.push({ path: '/login' })
     },

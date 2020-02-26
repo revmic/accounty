@@ -35,7 +35,8 @@
                   // fresh content will have been added to the cache.
                   // It's the perfect time to display a "New content is
                   // available; please refresh." message in the page's interface.
-                  const updateMessage = 'Accounty has been updated to handle file uploads in table edit view. Please refresh to get the latest changes.'
+                  // const updateMessage = 'Accounty has been updated to handle file uploads in table edit view. Please refresh to get the latest changes.'
+                  const updateMessage = 'Accounty has been updated. Please refresh to get the latest changes.'
                   alert(updateMessage)
                   break;
 
